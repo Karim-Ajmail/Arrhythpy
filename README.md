@@ -13,7 +13,7 @@ The easiest way to use Arrhythpy is to download the precompiled zip file that co
 - **Windows:** `Arrhythpy.zip`
 - **Mac:** `Arrhythpy_IOS.zip`
 
-This executable should run independently without needing to install Python.
+This executable should run independently without needing to install Python. Your operating system will probably warn you about the safety of the executable. Please trust me and download anyway (on windows: click 'More info' and the 'Run anyway')
 
 ### Alternative Installation
 
