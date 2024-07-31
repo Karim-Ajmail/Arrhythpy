@@ -8,7 +8,7 @@ For any questions or assistance, please feel free to contact me at [karim.ajmail
 
 ### Easiest Way
 
-The easiest way to use Arrhythpy is to download the precompiled zip file that contains the executable. Ensure you install the correct version for your operating system:
+The easiest way to use Arrhythpy is to download the precompiled zip file that contains the executable. To this end, go to 'Releases'. Ensure you install the correct version for your operating system:
 - **Windows:** `Arrhythpy_win`
 - **Mac:** `Arrhythpy_ios`
 
