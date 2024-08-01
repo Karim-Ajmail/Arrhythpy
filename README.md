@@ -21,14 +21,15 @@ If the precompiled version does not work, you have to compile the executable you
 #### 1. Clone the repository:
    ```sh
    git clone https://github.com/your-username/my-music-project.git
-   cd Arrhythpy
+   cd Arrhythpy```
+
 #### 2. Create new environment:
    ```sh
    conda create arrhythpy_env python==3.10
-   conda activate arrhythpy_env
+   conda activate arrhythpy_env```
 #### 3. Install dependencies:
    ```sh
-   pip install -r requirements.txt
+   pip install -r requirements.txt```
 #### 4. Generate the executable via pyinstaller:
    ```sh
-   pyinstaller -n Arrhythpy --onefile run.py
+   pyinstaller -n Arrhythpy --onefile run.py```
