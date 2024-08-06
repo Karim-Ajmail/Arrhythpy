@@ -21,7 +21,7 @@ If the precompiled version does not work, you will need to compile the executabl
 
 **1. Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/my-music-project.git
+   git clone https://github.com/Karim-Ajmail/Arrhythpy.git
    cd Arrhythpy
    ```
 
