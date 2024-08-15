@@ -17,7 +17,7 @@ This executable should run independently without needing to install Python. Your
 
 ### Alternative Installation
 
-If the precompiled version does not work, you will need to compile the executable yourself. To do this, download the Python scripts by cloning the repository:
+If the precompiled version does not work, you will need to compile the executable yourself. To do this, first download python (best via the anaconda distribution) and open the Anaconda Prompt Terminal. Download the Python scripts by cloning the repository by copying these comand into the terminal:
 
 **1. Clone the repository:**
    ```sh
