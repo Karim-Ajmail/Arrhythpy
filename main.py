@@ -498,7 +498,7 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
         
         print('\nSaving the output files to '+path+' ...\n')
         workbook.save(filename=path+'\\Arrhythpy_analysis.xlsx')      
-
+        print("Arrhthpy successfully finished! You can either analyse the next dataset or close the windows.\n)
     #os.remove(path+'\\hist.png')
     else:
         raise ValueError('Sorry, I did not find any files.')
