@@ -10,7 +10,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from main import run,analyse_single,load_transient,calc_accuracy,get_threshold_freq,get_threshold_arrythmia
 import threading
 '''
-GUI for Ahrrythpy. WRITTEN by Karim Ajmail 2023
+GUI for Arrhythpy. WRITTEN by Karim Ajmail 2023
 '''
 class ArrhythpyGUI(tk.Tk):
     def __init__(self):
