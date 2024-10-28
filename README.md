@@ -17,7 +17,7 @@ This executable should run independently without needing to install Python. Your
 
 ### Alternative Installation
 
-If the precompiled version does not work, you will need to compile the executable yourself. To do this, first install python and download the Python scripts typing these commands into a terminal (e.g. Anaconda Prompt):
+If the precompiled version does not work or your institution doesn't allow to download executables without official license, you will need to compile the executable yourself. To do this, first install python and download the Python scripts typing these commands into a terminal (e.g. Anaconda Prompt):
 
 **1. Clone the repository:**
    ```sh
@@ -40,3 +40,4 @@ If the precompiled version does not work, you will need to compile the executabl
    ```sh
    pyinstaller -n Arrhythpy --onefile run.py
    ```
+When you navigate to the 'dist' folder, you will find the executable called Arrhythpy. You can move to a convenient directory if you like and can be easily run to open the GUI.
