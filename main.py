@@ -54,7 +54,7 @@ Therefore, there are 6 classes: Tachycardic rhythmic, Tachycardic arrhythmic, rh
 All these analysed parameters together with the appropriate plots are saved in an excel sheet.
 '''
 
-def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration = 10.,sigma0 = .05,prominence=0.0005,threshold_abs = .1,varfreq_weight = 0.5,scale = 1.,path = None,show = False, save_mode = False):
+def run(files_,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration = 10.,sigma0 = .05,prominence=0.0005,threshold_abs = .1,varfreq_weight = 0.5,scale = 1.,path = None,show = False, save_mode = False):
     '''
     Parameter:
     - files:                list of files to be analyses. Must be line scan images (either tif or lsm files)
@@ -73,12 +73,17 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
     classes = {'Rhythmic' : 0, 'Tachycardic Rhythmic' : 1, 'Bradycardic Rhythmic' : 2, 'Arrhythmic' : 3, 'Tachycardic Arrhythmic': 4, 'Bradycardic Arrhythmic' : 5}
 
     if not path:
-        path = '\\'.join(files[0].split('\\')[:-1])
+        path = '\\'.join(files_[0].split('\\')[:-1])
 
-    if len(files) > 0:
+    if len(files_) > 0:
         position = 1                        # initialise position in excel spread sheet
         workbook = openpyxl.Workbook()      # open excel spread sheet
         sheet = workbook.active             # and activate it
+        files = []
+        for file in files_:
+            data_type = file.split('.')[-1]
+            if data_type!="xlsx" and data_type!="yaml" and not os.path.isdir(file):
+                files.append(file)
 
         histogram = np.full([len(files),2],-1.)
         distribution = np.zeros(6)
@@ -106,8 +111,7 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
                     intensity = np.genfromtxt(file, delimiter=' ')
                     c += 1
                 else:
-                    if data_type!="xlsx" and data_type!="yaml" and not os.path.isdir(file):
-                        print(f'\tWarning: Data type \'.{data_type}\' not supported!')
+                    print(f'\tWarning: Data type \'.{data_type}\' not supported!')
                     continue
 
                 red = int(len(intensity) // 5000)                                                    # this is to reduce computation time
