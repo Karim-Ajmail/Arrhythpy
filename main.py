@@ -106,7 +106,7 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
                     intensity = np.genfromtxt(file, delimiter=' ')
                     c += 1
                 else:
-                    if data_type!=".xlsx" and data_type!=".yaml":
+                    if data_type!="xlsx" and data_type!="yaml" and not os.path.isdir(file):
                         print(f'\tWarning: Data type \'.{data_type}\' not supported!')
                     continue
 
@@ -488,7 +488,7 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
         sheet.add_image(img,"B"+str(c+18))
 
         colors = ['seagreen'] + ['indianred']*2 + ['maroon']*3
-        sns.barplot(x= np.arange(len(distribution)), y=distribution, palette=colors)
+        sns.barplot(x=np.arange(len(distribution)), y=distribution, palette=colors, hue=np.arange(len(distribution)), dodge=False, legend=False)
         x_labels = ['Rhythmic' , 'Tachycardic\nRhythmic', 'Bradycardic\nRhythmic', 'Arrhythmic', 'Tachycardic\nArrhythmic', 'Bradycardic\nArrhythmic']
         plt.ylabel("Frequency", fontsize=14, fontweight='bold')
         plt.xticks(np.arange(len(distribution)), x_labels, rotation=45, fontsize=10, fontweight='bold')
