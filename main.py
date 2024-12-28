@@ -95,7 +95,11 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
             try:
                 data_type = file.split('.')[-1]
                 if data_type =='lsm' or data_type == 'tif':
-                    img = imread(file)[:,0,:]
+                    img_ = imread(file)
+                    if len(img_.shape)==3:
+                        img = img_[:,0,:]
+                    elif len(img_.shape)==2:
+                        img = img_
                     intensity = np.mean(img,axis=1)
                     c += 1
                 elif data_type == 'csv':
@@ -245,7 +249,8 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
                 mean_point = np.repeat(weight*wvl_minima + (1-weight)*wvl_maxima,2)                          # replace them by the pairwise weighted average of maximum and minimum.
                 widths_mean = interp1d(mean_point_x,mean_point,kind='previous',bounds_error=False, fill_value=(mean_point[0],mean_point[-1]))(np.linspace(idxs[0],idxs[-1],1000)) # linear interpolation
                 freq = pywt.scale2frequency('mexh',widths_mean) / (duration/len(intensity))               # width / scale information is converted into frequencies in Hz 
-
+                var_ratio = np.std(wvl_maxima / wvl_minima)
+                
                 if len(freq[freq>frequency]) > 0:
                     tachycard = np.sum(freq[freq>frequency] - frequency) / len(freq)                           # average amount of tachycardic i.e higher frequency contribution
                 else:
@@ -497,8 +502,9 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
         sheet.add_image(img,"G"+str(c+6))        
         
         print('\nSaving the output files to '+path+' ...\n')
-        workbook.save(filename=path+'\\Arrhythpy_analysis.xlsx')      
-        print("Arrhthpy successfully finished! You can either analyse the next dataset or close the windows.\n)
+        workbook.save(filename=path+'\\Arrhythpy_analysis.xlsx')    
+        print('Done! You can close the program or analyze the next folder')  
+
     #os.remove(path+'\\hist.png')
     else:
         raise ValueError('Sorry, I did not find any files.')
@@ -512,7 +518,11 @@ def load_transient(file):
     try:
         data_type = file.split('.')[-1]
         if data_type =='lsm' or data_type == 'tif':
-            img = imread(file)[:,0,:]
+            img_ = imread(file)
+            if len(img_.shape)==3:
+                img = img_[:,0,:]
+            elif len(img_.shape)==2:
+                img = img_
             intensity = np.mean(img,axis=1)
         elif data_type == 'csv':
             intensity = np.genfromtxt(file, delimiter=' ')
