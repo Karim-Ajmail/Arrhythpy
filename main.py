@@ -106,7 +106,8 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
                     intensity = np.genfromtxt(file, delimiter=' ')
                     c += 1
                 else:
-                    print(f'\tWarning: Data type \'.{data_type}\' not supported!')
+                    if data_type!=".xlsx" and data_type!=".yaml":
+                        print(f'\tWarning: Data type \'.{data_type}\' not supported!')
                     continue
 
                 red = int(len(intensity) // 5000)                                                    # this is to reduce computation time
