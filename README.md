@@ -2,7 +2,7 @@
 
 **Arrhythpy** is an open-source Python-based program designed to quantify and classify arrhythmias in calcium transients in an automated manner. See the corresponding paper at [link to paper] for a detailed explanation.
 
-For any questions or assistance, please feel free to contact me at [karim.ajmail@mtl.maxplanckschools.de](mailto:karim.ajmail@mtl.maxplanckschools.de). So far, Arrhythpy only reads lsm files from line scans as described in the paper. If you need support for another file type, let me know and I will add it.
+For any questions or assistance, please feel free to contact me at [karim.ajmail@mtl.maxplanckschools.de](mailto:karim.ajmail@mtl.maxplanckschools.de). So far, Arrhythpy only reads lsm or tif files from line scans as described in the paper. Additionally, there is the possibility to read in the transients directly as a csv file. If you need support for another file type, let me know and I will add it.
 
 ## Installation
 
