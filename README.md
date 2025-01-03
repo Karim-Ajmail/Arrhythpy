@@ -45,3 +45,5 @@ When you navigate to the 'dist' folder, you will find the executable called Arrh
 ## Running
 Once installed, simply double-click to run. It takes some time until the program is open, but eventually the GUI window is opened. Please refer to the Manual for information on the parameters. After running the programm the results are saved as an excel file including some figures about the data.
 
+You can alternatively run Arrhythpy from a terminal. Make sure to install the environment as instructed above and run main.py. You are prompted to provide the same parameters as in the GUI after which the same excel sheet will be saved. In addition, if you have a folder structure where you want to run Arrhythpy over many folders you can use the run_folders.py script.
+
