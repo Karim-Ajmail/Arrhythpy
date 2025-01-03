@@ -43,7 +43,7 @@ If the precompiled version does not work or your institution doesn't allow to do
 When you navigate to the 'dist' folder, you will find the executable called Arrhythpy. You can move to a convenient directory if you like and can be easily run to open the GUI.
 
 ## Running
-Once installed, simply double-click to run. It takes some time until the program is open, but eventually the GUI window is opened. Please refer to the Manual for information on the parameters. After running the programm the results are saved as an excel file including some figures about the data.
+Once installed, simply double-click the application to run. It takes some time until the program is open, but eventually the GUI window is opened. Please refer to the Manual for information on the parameters. After running the programm the results are saved as an excel file including some figures about the data.
 
 You can alternatively run Arrhythpy from a terminal. Make sure to install the environment as instructed above and run main.py. You are prompted to provide the same parameters as in the GUI after which the same excel sheet will be saved. In addition, if you have a folder structure where you want to run Arrhythpy over many folders you can use the run_folders.py script.
 
