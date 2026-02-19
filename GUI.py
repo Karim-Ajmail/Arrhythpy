@@ -35,7 +35,7 @@ class ArrhythpyGUI(tk.Tk):
         if path:
             self.path_entry.delete(0, tk.END)
             self.path_entry.insert(0, path)
-            self.files = glob.glob(path+'\*')
+            self.files = glob.glob(os.path.join(path, '*'))
 
     def browse_file(self):
         '''
@@ -204,9 +204,9 @@ class ArrhythpyGUI(tk.Tk):
         with open(os.path.join(path,'config.yaml'), 'w') as yaml_file:
             yaml.dump(params, yaml_file)
 
-        files = glob.glob(path+'\*')
+        
         # Call the run function with the extracted parameters
-        run(files=files, frequency=frequency, threshold_freq=threshold_freq, threshold_arrythmia=threshold_arrhythmia,
+        run(files=self.files, frequency=frequency, threshold_freq=threshold_freq, threshold_arrythmia=threshold_arrhythmia,
                 duration=duration, path=None, show=False,
                 sigma0=additional_parameters[0], prominence=additional_parameters[1],
                 threshold_abs=additional_parameters[2], varfreq_weight=additional_parameters[3],

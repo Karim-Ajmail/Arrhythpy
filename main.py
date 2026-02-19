@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 from tifffile import imread
 import openpyxl
 import pywt 
@@ -73,7 +74,7 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
     classes = {'Rhythmic' : 0, 'Tachycardic Rhythmic' : 1, 'Bradycardic Rhythmic' : 2, 'Arrhythmic' : 3, 'Tachycardic Arrhythmic': 4, 'Bradycardic Arrhythmic' : 5}
 
     if not path:
-        path = '\\'.join(files[0].split('\\')[:-1])
+        path = os.path.dirname(files[0])
 
     if len(files) > 0:
         position = 1                        # initialise position in excel spread sheet
@@ -108,7 +109,7 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
                     intensity = np.mean(img,axis=1)
                     c += 1
                 elif data_type == 'csv':
-                    intensity = np.genfromtxt(file, delimiter=' ')
+                    intensity = pd.read_csv(file).iloc[:, 0].to_numpy()
                     c += 1
                 else:
                     print(f'\tWarning: Data type \'.{data_type}\' not supported!')
@@ -456,11 +457,11 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
                 histogram[c,0] = total
                 histogram[c,1] = arrythmia
                 distribution[classes[classification]] += 1
-            except:
+            except Exception as e:
                 if save_mode:
-                    raise ValueError("Something went wrong with the file! Check if your file is not corrupted.")
+                    raise ValueError(f"Something went wrong with the file {file}! Check if your file is the right format and not corrupted.")
                 else:
-                    print('Something went wrong with this file, I\'m skipping it!')
+                    print(f'Something went wrong with this file {file}, I\'m skipping it!')
                     continue
         #histogram = histogram[:c]
         plt.hist(histogram[:,0],bins=20,color='royalblue', alpha=0.7)
@@ -498,16 +499,16 @@ def run(files,frequency,threshold_freq = .1, threshold_arrythmia = .1, duration 
         plt.xticks(np.arange(len(distribution)), x_labels, rotation=45, fontsize=10, fontweight='bold')
         sns.despine()
         plt.tight_layout()
-        plt.savefig(path_figures+'\\hist3.png',dpi=300)
+        plt.savefig(os.path.join(path_figures,'hist3.png'),dpi=300)
         plt.cla()
         plt.close('all')
-        img = openpyxl.drawing.image.Image(path_figures+'\\hist3.png') # include the plot
+        img = openpyxl.drawing.image.Image(os.path.join(path_figures,'hist3.png')) # include the plot
         img.height= 200
         img.width = 250
         sheet.add_image(img,"G"+str(c+6))        
         
         print('\nSaving the output files to '+path+' ...\n')
-        workbook.save(filename=path+'\\Arrhythpy_analysis.xlsx')    
+        workbook.save(filename=os.path.join(path, 'Arrhythpy_analysis.xlsx'))
         print('Done! You can close the program or analyze the next folder')  
 
     #os.remove(path+'\\hist.png')
