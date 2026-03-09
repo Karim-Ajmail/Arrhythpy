@@ -47,5 +47,8 @@ Once installed, simply double-click the application to run. It takes some time u
 
 You can alternatively run Arrhythpy from a terminal. Make sure to install the environment as instructed above and run main.py. You are prompted to provide the same parameters as in the GUI after which the same excel sheet will be saved. In addition, if you have a folder structure where you want to run Arrhythpy over many folders you can use the run_folders.py script.
 
-If you are working with csv files, they can also be uploaded, but have to be a single column containing the values of the transient. If the file however is to long and contains to many beats (max. 25) you have to split the csv into multiple smaller ones, because Arrhythpy cannot handle such large files. For this, use the split_csv.py script which splits a single csv into multiple csvs into its own folder. The created folder can then be used as path in the Arrhthpy GUI. 
+If you are working with csv files, they can also be uploaded, but have to be a single column containing the values of the transient. If the file however is to long and contains to many beats (max. 25) you have to split the csv into multiple smaller ones, because Arrhythpy cannot handle such large files. For this, use the split_csv.py script which splits a single csv into multiple csvs into its own folder. The created folder can then be used as path in the Arrhthpy GUI. You can either download the CSVSplitter in the release folder or compile it yourself similar to how you compile Arrhythpy. First perform steps 1.-3. as described in alternative Installation above and replace the last command by:
+   ```sh
+   pyinstaller -n CSVSplitter --onefile --windowed split_csv.py
+   ```
 
